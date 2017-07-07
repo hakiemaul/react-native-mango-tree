@@ -44,8 +44,12 @@ class Landing extends React.Component {
   }
 
   _startTree () {
-    this.props.startTree(this.state.treeName)
-    this.props.navigation.navigate('Playground')
+    if (this.state.treeName.length > 0) {
+      this.props.startTree(this.state.treeName)
+      this.props.navigation.navigate('Playground')
+    } else {
+      alert('Our garden won\'t accept anonymous tree..')
+    }
   }
 
   render () {

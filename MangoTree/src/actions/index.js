@@ -1,7 +1,11 @@
 export const startTree = (name) => {
+  let deadAge = Math.floor(Math.random() * 10) + 10
+  let harvestAge = Math.floor(deadAge / 2)
   return {
     type: 'START_TREE',
-    payload: name
+    payload: name,
+    dead: deadAge,
+    harvest: harvestAge
   }
 }
 

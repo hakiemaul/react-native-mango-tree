@@ -5,25 +5,24 @@ const initialState = {
   fruitsHarvested: 0,
   harvestAge: 0,
   deadAge: 0,
-  deadStatus: 0
+  deadStatus: false
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'START_TREE':
-      let harvestAge = 10
-      let deadAge = 20
-      return { ...initialState, name: action.payload, harvestAge: 10, deadAge: 20 }
+      return { ...initialState, name: action.payload, harvestAge: action.harvest, deadAge: action.dead }
     case 'ADD_AGE':
       const newAge = state.age + 1
-      if (newAge >= harvestAge) {
-        let newFruits = 5
+      let newFruits = 0
+      if (newAge >= state.harvestAge) {
+        newFruits = Math.floor(Math.random() * 7) + 3
       }
       let treeStat = state.deadStatus
-      if (newAge === deadAge) {
-        treeStat = 1
+      if (newAge === state.deadAge) {
+        treeStat = true
       }
-      return { ...state, age: newAge, fruits: 10, deadStatus: treeStat }
+      return { ...state, age: newAge, fruits: newFruits, deadStatus: treeStat }
     case 'HARVEST':
       let harvested = state.fruitsHarvested + state.fruits
       return { ...state, fruits: 0, fruitsHarvested: harvested }
