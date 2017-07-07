@@ -10,4 +10,4 @@ export default App = StackNavigator({
   Landing: { screen: Landing },
   Playground: { screen: Playground },
   GameOver: { screen: GameOver }
-})
+}, { headerMode: 'screen' })

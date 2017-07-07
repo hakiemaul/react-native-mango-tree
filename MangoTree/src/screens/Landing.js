@@ -14,14 +14,17 @@ import { startTree } from '../actions'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: 'green',
+    backgroundColor: '#4EA384',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 40,
     textAlign: 'center',
     margin: 10,
+    fontWeight: 'bold',
+    color: 'white'
   },
   instructions: {
     textAlign: 'center',
@@ -55,25 +58,29 @@ class Landing extends React.Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text>Welcome!</Text>
-        <TextInput
-          onChangeText={(text) => this.setState({ name: text })}
-          value={ this.state.name }
-          style={{ width: 300 }}
-          placeholder='Your name'
-        />
-        <TextInput
-          onChangeText={(text) => this.setState({ treeName: text })}
-          value={ this.state.treeName }
-          style={{ width: 300 }}
-          placeholder='Give your tree a name'
-        />
+        <Text style={styles.welcome}>Welcome!</Text>
+        <View>
+          <TextInput
+            onChangeText={(text) => this.setState({ name: text })}
+            value={ this.state.name }
+            style={{ width: 300 }}
+            placeholder='Your name'
+          />
+          <TextInput
+            onChangeText={(text) => this.setState({ treeName: text })}
+            value={ this.state.treeName }
+            style={{ width: 300 }}
+            placeholder='Give your tree a name'
+          />
+        </View>
+        <View style={{ marginBottom: 50}}>
         <Button
           onPress={() => this._startTree() }
           title="Start"
           color="#841584"
           accessibilityLabel="Start the tree!"
         />
+        </View>
       </View>
     )
   }
