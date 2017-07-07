@@ -6,6 +6,10 @@ import {
   Button,
   TextInput
 } from 'react-native'
+import { Provider, connect } from 'react-redux'
+
+import store from '../store'
+import { startTree } from '../actions'
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +34,7 @@ class Landing extends React.Component {
   static navigationOptions = {
     title: 'Home'
   }
-  
+
   constructor () {
     super ()
     this.state = {
@@ -40,7 +44,8 @@ class Landing extends React.Component {
   }
 
   _startTree () {
-
+    this.props.startTree(this.state.treeName)
+    this.props.navigation.navigate('Playground')
   }
 
   render () {
@@ -70,4 +75,10 @@ class Landing extends React.Component {
   }
 }
 
-export default Landing
+const mapDispatchToProps = (dispatch) => {
+  return {
+    startTree: (name) => dispatch(startTree(name))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Landing)

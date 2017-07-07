@@ -9,7 +9,7 @@ import App from './src/App'
 import store from './src/store'
 
 class MangoTree extends Component {
-  render() {
+  render () {
     return (
       <Provider store={store}>
         <App />
@@ -18,4 +18,4 @@ class MangoTree extends Component {
   }
 }
 
-AppRegistry.registerComponent('MangoTree', () => App);
+AppRegistry.registerComponent('MangoTree', () => MangoTree);
